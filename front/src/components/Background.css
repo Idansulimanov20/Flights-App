@@ -1,0 +1,150 @@
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #87CEEB, #ffcc00); /* Gradient בין שמיים לאור שקיעה */
+    overflow: hidden;
+    z-index: -1; /* מאחורי שאר התוכן */
+    animation: skyAnimation 120s infinite; /* אנימציה של שינוי צבעים לשמיים */
+}
+
+
+@keyframes skyAnimation {
+    0% { background: linear-gradient(to bottom, #87CEEB, #ffcc00); } /* שמיים בהירים */
+    50% { background: linear-gradient(to bottom, #ff6347, #ffde06); } /* שקיעה */
+    100% { background: linear-gradient(to bottom, #87CEEB, #104469); } /* חזרה לשמיים בהירים */
+}
+
+
+.cloud {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    opacity: 0.9;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6); 
+    animation: moveClouds 25s linear infinite;
+    filter: blur(4px); 
+}
+
+.cloud:nth-child(2) {
+    width: 220px;
+    height: 110px;
+    top: 15%;
+    left: 10%;
+    animation-duration: 30s;
+    animation-delay: 2s;
+}
+
+.cloud:nth-child(3) {
+    width: 250px;
+    height: 120px;
+    top: 30%;
+    left: 50%;
+    animation-duration: 35s;
+    animation-delay: 4s;
+}
+
+.cloud:nth-child(4) {
+    width: 180px;
+    height: 90px;
+    top: 60%;
+    left: 70%;
+    animation-duration: 40s;
+    animation-delay: 1s;
+}
+
+.cloud:nth-child(5) {
+    width: 210px;
+    height: 100px;
+    top: 20%;
+    left: 80%;
+    animation-duration: 28s;
+    animation-delay: 6s;
+}
+
+
+@keyframes moveClouds {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+
+.plane {
+    position: absolute;
+    font-size: 3rem;
+    animation: movePlane 12s linear infinite, rotatePlane 20s linear infinite; /* מטוס עם אנימציה של סיבוב */
+    animation-delay: 2s;
+}
+
+
+.plane2 {
+    font-size: 3.5rem;
+    top: 10%;
+    left: -10%;
+    animation: movePlane 10s linear infinite reverse, rotatePlane 25s linear infinite;
+    animation-delay: 3s;
+}
+
+.plane3 {
+    font-size: 3rem;
+    top: 35%;
+    left: -15%;
+    animation: movePlane 15s linear infinite, rotatePlane 22s linear infinite;
+    animation-delay: 5s;
+}
+
+.plane4 {
+    font-size: 4rem;
+    top: 25%;
+    left: -20%;
+    animation: movePlane 18s linear infinite, rotatePlane 18s linear infinite;
+    animation-delay: 4s;
+}
+
+.plane5 {
+    font-size: 3.2rem;
+    top: 50%;
+    left: -30%;
+    animation: movePlane 20s linear infinite reverse, rotatePlane 28s linear infinite;
+    animation-delay: 6s;
+}
+
+.plane6 {
+    font-size: 3.8rem;
+    top: 60%;
+    left: -5%;
+    animation: movePlane 22s linear infinite, rotatePlane 25s linear infinite;
+    animation-delay: 7s;
+}
+
+
+@keyframes movePlane {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+
+@keyframes rotatePlane {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+
+.wind {
+    position: absolute;
+    top: 40%;
+    left: -10%;
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    animation: windAnimation 20s infinite linear;
+}
+
+@keyframes windAnimation {
+    0% { transform: scaleX(1); }
+    50% { transform: scaleX(1.2); }
+    100% { transform: scaleX(1); }
+}
