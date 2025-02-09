@@ -11,7 +11,7 @@ const apiCall = async (url, method, body) => {
 .then(obj=>{
     if(obj.status === "success")
         return obj.data;
-    throw new Error(obj.error);  
+    throw new Error(obj.message);  
 });
 
 }

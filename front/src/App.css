@@ -53,15 +53,19 @@ caption {
 }
 
 .tableError{
-  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  color: rgb(245, 0, 0);
   font-size: 20px;
   text-align: center;
-  background-color: red;
+  background-color: rgb(255, 255, 255);
 }
 .error{
-  color: red;
+  color: rgb(0, 0, 0);
   font-size: 20px;
+  border-radius: 10px;
+  padding: 10px;
   text-align: center;
+  font-weight: bolder;
 }
 h1{
   margin-top: 20px;

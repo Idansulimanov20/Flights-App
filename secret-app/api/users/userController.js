@@ -18,20 +18,20 @@ const getUsers = async (req, res) => {
 
   const registerUser = async (req, res) => {
     try {
-      const { name, email, password, isAdmin } = req.body;
+      const { name, email, password} = req.body;
       let userExists = await User.findOne({ email });
       if (userExists) return res.status(400).json({ success:false,message: "User already exists" });  
       const user = await User.create({
         name,
         email,
         password,
-        isAdmin,
+        isAdmin:false,
       });
       res.status(201).json({
         _id: user._id,
         name: user.name,
         email: user.email,
-        isAdmin: user.isAdmin,
+        isAdmin:false,
       });
     } catch (err) {
       res.status(500).json({ success:false,error: err.message });
@@ -61,7 +61,7 @@ const loginUser = async (req, res) => {
   }
 };
 const updateAdmin = async (req, res) => {
-    const {isAdmin } = req.body;
+    const {isAdmin} = req.body;
     const { id } = req.params; 
   try {
     const result = await User.findByIdAndUpdate(id, { isAdmin }, { new: true, runValidators: true });
