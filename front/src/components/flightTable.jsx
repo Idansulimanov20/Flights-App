@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getAll, removeOne } from '../utils/flightApi';
 import FlightForm from './flightForm';
 import Background from "./Background";
-import Menu from './Menu';
+import UserButton from './UserButton';
 
 function FlightRow(props) {
   const {_id,source,destination,price,passengers,time,editClick,deleteClick} = props;
@@ -77,7 +77,6 @@ export default function FlightPage(){
   return <div>
       <Background/>
     <span className='error'>{error}</span>
-    <Menu title={'Guest'}/>
     <h1>✈️Welcone to Fly Emirates🌴:</h1>
     <FlightTable flights={flights} updateFlights={updateFlights} onError={onError}/>
     <button className='add' onClick={()=>setDisplayForm(true)}>add Flight</button>

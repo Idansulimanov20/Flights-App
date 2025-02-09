@@ -1,0 +1,38 @@
+.userCont{
+    float: right;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    .userButton, .userWindow{
+        background-color: aqua;
+        border: solid black 2px;
+        border-radius: 10px;
+        padding: 10px 20px;
+        font-size: 1.2em;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .userButton:hover, .userWindow:hover {
+        background-color: lightblue;
+        transform: scale(1.05);
+    }
+    .userButton{
+        margin-top: 5px;
+        margin-right: 10px;
+        text-align: center;
+        user-select: none;
+        cursor: pointer;
+    }
+    .userWindow{
+        width: 160px;
+        margin-right: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        padding: 4px;
+        align-items: center;
+    }
+}
