@@ -5,8 +5,11 @@ const generateToken = require("../utils/generateToken");
 
 const getUsers = async (req, res) => {
     try {
-      const users = await User.find();
-      res.json(users);
+     const data = await User.find({})
+             res.status(200).json({
+                 status: "success",
+                 data: data
+             })
     } catch (error) {
       res.status(500).json({ message: "Error fetching users", error });
     }
