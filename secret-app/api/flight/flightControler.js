@@ -3,13 +3,13 @@ const getAll = async function (req, res) {
     try {
         const data = await flight.find({})
         res.status(200).json({
-            status: "success",
+            success: true,
             data: data
         })
     }
     catch (err) {
         res.status(404).json({
-            status: "fail",
+           succees:false,
             message: "error:😱" + err
         })
     }
@@ -19,7 +19,7 @@ const getById = async function (req, res, next) {
         let id = req.params.id;
         const data = await flight.findById(id)
         res.status(200).json({
-            status: "success",
+            succees:true,
             data: data
         })
         if(!data)
@@ -27,7 +27,7 @@ const getById = async function (req, res, next) {
     }
     catch (err) {
         res.status(404).json({
-            status: "fail",
+           succees:false,
             message: "error:😱" + err
         })
     }
@@ -37,13 +37,13 @@ const addOne = async function (req, res) {
         let newFlightInfo = req.body;
         const newFlight = await flight.create(newFlightInfo);
         res.status(201).json({
-            status: "success",
+            succees:true,
             data: newFlight
         })
     }
     catch (err) {
         res.status(400).json({
-            status: "fail",
+            succees:false,
             message: "error:😱" + err
         })
     }
@@ -53,11 +53,11 @@ const editOne = async function (req, res) {
         let id = req.params.id;
         let data = await flight.findByIdAndUpdate(id, req.body, { new: true, runValidators: true });
         if (!data) {
-            return res.status(404).json({ status: "fail", message: "flight not found" });
+            return res.status(404).json({ succees:false, message: "flight not found" });
         }
-        res.status(200).json({ status: "success", data });
+        res.status(200).json({ success:true, data });
     } catch (err) {
-        res.status(400).json({ status: "fail", message: `error:😱 ${err}` });
+        res.status(400).json({ succees:false, message: `error:😱 ${err}` });
     }
 };
 
@@ -66,11 +66,11 @@ const removeOne = async function (req, res) {
         let id = req.params.id;
         let data = await flight.findByIdAndDelete(id);
         if (!data) {
-            return res.status(404).json({ status: "fail", message: "flight not found" });
+            return res.status(404).json({ succees:false, message: "flight not found" });
         }
-        res.status(200).json({ status: "success", data: null });
+        res.status(200).json({ succees:true, data: null });
     } catch (err) {
-        res.status(400).json({ status: "fail", message: `error:😱 ${err}` });
+        res.status(400).json({ succees:false, message: `error:😱 ${err}` });
     }
 };
 
