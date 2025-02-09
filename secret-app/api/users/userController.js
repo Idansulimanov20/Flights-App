@@ -5,7 +5,7 @@ const generateToken = require("../utils/generateToken");
 
 const getUsers = async (req, res) => {
     try {
-     const data = await User.find({})
+     const data = await User.find({}, { password: 0 });
              res.status(200).json({
                  success: true,
                  data: data
@@ -32,7 +32,6 @@ const getUsers = async (req, res) => {
         name: user.name,
         email: user.email,
         isAdmin: user.isAdmin,
-        token: generateToken(user._id),
       });
     } catch (err) {
       res.status(500).json({ success:false,error: err.message });
@@ -55,11 +54,20 @@ const loginUser = async (req, res) => {
       name: user.name,
       email: user.email,
       isAdmin: user.isAdmin,
-      token: generateToken(user._id),
+      token: generateToken(user.email,user.isAdmin),
     });
   } catch (err) {
     res.status(500).json({ success:false,error: err.message });
   }
 };
-
-module.exports = { registerUser, loginUser ,getUsers };
+const updateAdmin = async (req, res) => {
+    const {isAdmin } = req.body;
+    const { id } = req.params; 
+  try {
+    const result = await User.findByIdAndUpdate(id, { isAdmin }, { new: true, runValidators: true });
+    if (!result) return res.status(404).json({ success:false ,message: "User not found" });
+    else res.status(200).json({ success:true ,message: "User updated successfully", data: {email: result.email , name: result.name} });
+    } catch (error) {
+    res.status(500).json({ success:false ,message: "Error updating user", error });
+    }}; 
+module.exports = { registerUser , loginUser , getUsers, updateAdmin };
