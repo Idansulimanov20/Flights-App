@@ -76,6 +76,7 @@ export default function FlightPage(){
   },[])
   return <div>
       <Background/>
+      <UserButton updateFlights={updateFlights} onError={onError}/>
     <span className='error'>{error}</span>
     <h1>✈️Welcone to Fly Emirates🌴:</h1>
     <FlightTable flights={flights} updateFlights={updateFlights} onError={onError}/>
