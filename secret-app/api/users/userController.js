@@ -47,15 +47,9 @@ const loginUser = async (req, res) => {
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({  success:false ,message: "Invalid email or password" });
-
-    res.json({
-     success:true,
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      isAdmin: user.isAdmin,
-      token: generateToken(user.email,user.isAdmin),
-    });
+    const data = {email: user.email , name: user.name ,isAdmin: user.isAdmin};
+    const token = generateToken(user.email,user.isAdmin);
+    res.json({ success:true,data,token});
   } catch (err) {
     res.status(500).json({ success:false,error: err.message });
   }

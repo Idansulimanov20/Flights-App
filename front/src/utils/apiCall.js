@@ -12,8 +12,10 @@ const apiCall = async (url, method, body) => {
     return fetch(BASE+url,options)
 .then(res=>res.json())
 .then(obj=>{
-    if(obj.token)
+    if(obj.token){
         localStorage.setItem('token',obj.token)
+        localStorage.setItem('user',JSON.stringify(obj.data))
+}
     if(obj.success === true)
         return obj.data;
     throw new Error(obj.message);  

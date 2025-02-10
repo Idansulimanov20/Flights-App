@@ -6,7 +6,7 @@ const protect = async (req, res, next) => {
     let token = req.header("Authorization");
 
     if (!token || !token.startsWith("Bearer ")) {
-      return res.status(401).json({ sucsses : false ,message: "No token, authorization denied" });
+      return res.status(401).json({ success : false ,message: "No token, authorization denied" });
     }
 
     token = token.split(" ")[1]; // להוציא את הטוקן מה-Header
@@ -15,7 +15,7 @@ const protect = async (req, res, next) => {
     req.user = await User.findById(decoded.id).select("-password"); // שליפת פרטי המשתמש ללא הסיסמה
     next();
   } catch (error) {
-    res.status(401).json({sucsses : false, message: "Invalid token" });
+    res.status(401).json({success : false, message: "Invalid token" });
   }
 };
 

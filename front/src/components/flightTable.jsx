@@ -70,7 +70,10 @@ export default function FlightPage(){
   const [error,setError] = useState('');
   const [displayForm,setDisplayForm] = useState(false);
   const onError = (err) => setError(err.toString());
-  const updateFlights = () => getAll().then(arr=>setFlights(arr)).catch(onError);
+  const updateFlights = () => getAll().then(arr=>setFlights(arr)).catch(err=>{
+ onError(err);
+ setFlights([]);
+  });
   useEffect(()=>{
    updateFlights();
   },[])

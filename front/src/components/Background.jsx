@@ -1,5 +1,5 @@
 import React from "react";
-import "./Background.css"; // קובץ ה-CSS עם האנימציות
+import "./css/Background.css"; // קובץ ה-CSS עם האנימציות
 
 export default function Background() {
   return (
