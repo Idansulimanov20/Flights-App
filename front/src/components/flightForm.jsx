@@ -7,7 +7,6 @@ useEffect(()=>{
         return;
     }
     getById(flightId).then(data => {
-        console.log(data); // Log the data to debug
         setForm(data);
     })
     .catch(onError)

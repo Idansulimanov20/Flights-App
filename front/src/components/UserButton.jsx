@@ -79,6 +79,7 @@ function Login(props) {
                 onChange={(ev) => setPassword(ev.target.value)}
             />
             <button onClick={handleLogin} disabled={disable}>Login</button>
+            <span style={{"fontSize":"20px","margin":"0"}}>new user?</span>
             <a href="#" onClick={props.signupClicked}>Sign Up</a>
         </UserWindow>
     );
