@@ -42,6 +42,7 @@ function Login(props) {
         setError('');
         try {
             await apiLogin(email, password);
+            console.log('got here');
             props.onLogin();
         } catch (err) {
             setError(err.toString());

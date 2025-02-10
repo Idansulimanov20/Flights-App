@@ -14,7 +14,7 @@ const apiCall = async (url, method, body) => {
 .then(obj=>{
     if(obj.token)
         localStorage.setItem('token',obj.token)
-    if(obj.status === "success")
+    if(obj.success === true)
         return obj.data;
     throw new Error(obj.message);  
 });
